@@ -1,1 +1,4 @@
-day1input.txt
+*input.txt
+/C# Solution/.vs/C# Solution
+/C# Solution/obj
+*.sln

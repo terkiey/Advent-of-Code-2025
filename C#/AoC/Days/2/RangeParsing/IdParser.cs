@@ -1,4 +1,4 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
 internal class IdParser : IIdParser
 {

@@ -1,20 +1,11 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
-/// <summary>
-/// This is the composition root.
-/// </summary>
-internal class Day2 : IDay
+internal class Day2 : Day
 {
-    public string AnswerOne { get; private set; } = String.Empty;
-    public string AnswerTwo { get; private set; } = String.Empty;
-
-    public void Main()
+    protected override void RunLogic(string[] input)
     {
-        string path = Path.Combine(AppContext.BaseDirectory, "Data", "day2input.txt");
-        string input = File.ReadAllLines(path)[0];
-
         IIdParser _idParser = new IdParser();
-        List<string[]> ranges = _idParser.ParseIdRanges(input);
+        List<string[]> ranges = _idParser.ParseIdRanges(input[0]);
 
         double PartOneSum = 0;
         double PartTwoSum = 0;

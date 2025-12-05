@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace AoC;
+namespace AoC.Days;
 
 internal class RollRater : IRollRater
 {

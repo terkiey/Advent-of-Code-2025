@@ -1,4 +1,4 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
 /// <summary>
 /// Tracks the dial turns that occur on the safe and deduces the password from it.

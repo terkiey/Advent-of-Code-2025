@@ -1,16 +1,10 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
-internal class Day3 : IDay
+internal class Day3 : Day
 {
-    public string AnswerOne { get; private set; } = String.Empty;
-    public string AnswerTwo { get; private set; } = String.Empty;
-
-    public void Main()
-    {
+	protected override void RunLogic(string[] batteryBanks)
+	{
         IBatteryChooser _batteryChooser = new BatteryChooser();
-
-        string path = Path.Combine(AppContext.BaseDirectory, "Data", "day3input.txt");
-        string[] batteryBanks = File.ReadAllLines(path);
 
         long sumJoltage = 0;
         foreach(string batteryBank in batteryBanks)

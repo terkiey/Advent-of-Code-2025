@@ -1,4 +1,4 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
 public interface IIdValidator
 {

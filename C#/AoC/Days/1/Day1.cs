@@ -1,23 +1,14 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
-/// <summary>
-/// This is the composition root.
-/// </summary>
-internal class Day1 : IDay
+internal class Day1 : Day
 {
-    public string AnswerOne { get; private set; } = String.Empty;
-    public string AnswerTwo { get; private set; } = String.Empty;
-
-    public void Main()
+    protected override void RunLogic(string[] instructions)
     {
-        string path = Path.Combine(AppContext.BaseDirectory, "Data", "day1input.txt");
-        string[] input = File.ReadAllLines(path);
         ISafe safe = new Safe(50);
         ISafeTracker safeTracker = new SafeTracker(safe);
 
-        List<int> dialTurns = safe.ReadInstructions(input);
-        
-        foreach(int dialTurn in dialTurns)
+        List<int> dialTurns = safe.ReadInstructions(instructions);
+        foreach (int dialTurn in dialTurns)
         {
             safe.TurnDial(dialTurn);
         }

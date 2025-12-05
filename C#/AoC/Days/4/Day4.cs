@@ -1,15 +1,9 @@
-﻿namespace AoC;
+﻿namespace AoC.Days;
 
-internal class Day4 : IDay
+internal class Day4 : Day
 {
-    public string AnswerOne { get; private set; } = String.Empty;
-    public string AnswerTwo { get; private set; } = String.Empty;
-
-    public void Main()
+    protected override void RunLogic(string[] gridRowStrings)
     {
-        string path = Path.Combine(AppContext.BaseDirectory, "Data", "day4input.txt");
-        string[] gridRowStrings = File.ReadAllLines(path);
-
         IRollRater _paperRater = new RollRater(gridRowStrings);
 
         _paperRater.RateRolls();

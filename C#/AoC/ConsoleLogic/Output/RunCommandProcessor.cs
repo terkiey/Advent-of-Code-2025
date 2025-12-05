@@ -65,18 +65,38 @@ internal class RunCommandProcessor : IRunCommandProcessor
 
         List<long> fileTimes = [];
         List<long> logicTimes = [];
-        for (int testIndex = 0; testIndex < testRuns;  testIndex++)
+        for (int testIndex = 0; testIndex < testRuns; testIndex++)
         {
             dayProgram.Main(dayArgs);
             fileTimes.Add(dayProgram.FileTimer.ElapsedMilliseconds);
             logicTimes.Add(dayProgram.LogicTimer.ElapsedMilliseconds);
         }
 
-        Console.WriteLine($"Day {day} | Tests: {testRuns}");
-        Console.WriteLine($"Filetimes | Average: {fileTimes.Average()}ms | Max: {fileTimes.Max()}ms | Min: {fileTimes.Min()}ms");
-        Console.WriteLine($"Logictimes | Average: {logicTimes.Average()}ms | Max: {logicTimes.Max()}ms | Min: {logicTimes.Min()}ms");
+        string col1;
+        string col2;
+        string col3;
+        string col4;
+        string colSep = " | ";
+
+        col1 = $"Day {day}";
+        col2 = $"Tests: {testRuns}";
+        Console.WriteLine(col1.PadRight(10) + colSep + col2.PadRight(15));
+
+
+        col1 = "Filetimes";
+        col2 = $"Max: {fileTimes.Max()}ms";
+        col3 = $"Min: {fileTimes.Min()}ms";
+        col4 = $"Average: {Math.Ceiling(fileTimes.Average())}ms";
+        Console.WriteLine(col1.PadRight(10) + colSep + col2.PadRight(15) + colSep + col3.PadRight(15) + colSep + col4.PadRight(20));
+
+        col1 = "Logictimes";
+        col2 = $"Max: {logicTimes.Max()}ms";
+        col3 = $"Min: {logicTimes.Min()}ms";
+        col4 = $"Average: {Math.Ceiling(logicTimes.Average())}ms";
+        Console.WriteLine(col1.PadRight(10) + colSep + col2.PadRight(15) + colSep + col3.PadRight(15) + colSep + col4.PadRight(20));
     }
 
+    // TODO_MID: Write a reusable command that takes a list of strings, "columnList" and places them padded by a given padList, with a given separator character between.
     private string GetFilename(int day, FileType fileType)
     {
         switch (fileType)

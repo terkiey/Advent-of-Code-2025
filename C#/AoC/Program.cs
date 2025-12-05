@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using AoC.Days;
-using AoC.ConsoleLogic;
+﻿using AoC.ConsoleLogic;
 
 namespace AoC;
 

@@ -74,12 +74,12 @@ internal class BeamSimulator : IBeamSimulator
             }
         }
 
-        if (stepIndex == _manifoldHeight - 1)
+        stepIndex++;
+
+        if (stepIndex == _manifoldHeight)
         {
             endReached = true;
         }
-
-        stepIndex++;
 
         return endReached;
     }
@@ -106,12 +106,12 @@ internal class BeamSimulator : IBeamSimulator
             }
         }
 
-        if (stepIndex == _manifoldHeight - 1)
+        stepIndex++;
+
+        if (stepIndex == _manifoldHeight)
         {
             endReached = true;
         }
-
-        stepIndex++;
 
         return endReached;
     }

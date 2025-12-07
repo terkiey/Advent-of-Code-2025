@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\day1testinput.txt" />
     <None Remove="Data\day4input.txt" />
     <None Remove="Data\day4testinput.txt" />
     <None Remove="Data\day5input.txt" />
@@ -16,11 +17,16 @@
     <None Remove="Data\day5testinput2.txt" />
     <None Remove="Data\day6input.txt" />
     <None Remove="Data\day6testinput.txt" />
+    <None Remove="Data\day7input.txt" />
+    <None Remove="Data\day7testinput.txt" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Data\day1input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day1testinput.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\day2input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -53,6 +59,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\day6testinput.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day7input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day7testinput.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

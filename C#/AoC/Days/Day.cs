@@ -8,13 +8,15 @@ internal abstract class Day : IDay
     public Stopwatch FileTimer { get; protected set; } = new Stopwatch();
     public Stopwatch LogicTimer { get; protected set; } = new Stopwatch();
 
+    public int RunParameter;
+
     public void Main(DayArgs args)
     {
         string[] input = FileInput(args.filename);
-        RunLogicTimed(input);
+        RunLogicTimed(input, args.runParameter);
     }
 
-    protected string[] FileInput(string filename)
+    protected virtual string[] FileInput(string filename)
     {
         FileTimer.Start();
         string path = Path.Combine(AppContext.BaseDirectory, "Data", filename);
@@ -24,11 +26,17 @@ internal abstract class Day : IDay
         return input;
     }
 
-    protected void RunLogicTimed(string[] input)
+    protected void RunLogicTimed(string[] input, int runParameter)
     {
         LogicTimer.Start();
+        AssignRunParameter(runParameter);
         RunLogic(input);
         LogicTimer.Stop();
+    }
+
+    protected void AssignRunParameter(int runParameter)
+    {
+        RunParameter = runParameter;
     }
 
     protected abstract void RunLogic(string[] input);

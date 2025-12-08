@@ -1,0 +1,41 @@
+﻿namespace AoC.Days;
+
+internal class Day8: Day
+{
+    protected override string[] FileInput(string filename)
+    {
+        FileTimer.Start();
+        string path = Path.Combine(AppContext.BaseDirectory, "Data", filename);
+        string[] input = File.ReadAllLines(path);
+        FileTimer.Stop();
+
+        return input;
+    }
+
+    protected override void RunLogic(string[] lines)
+    {
+        IPlayground playground = new Playground(lines);
+        playground.CalculateAllDistances();
+
+        for (int iteration = 1; iteration <= RunParameter; iteration++)
+        {
+            playground.ConnectClosestPair();
+        }
+
+        int AnswerOneNum = 1;
+        playground.Circuits.Sort((a, b) => b.CountBoxes.CompareTo(a.CountBoxes));
+        for (int index = 0; index < 3; index++)
+        {
+            AnswerOneNum *= playground.Circuits[index].CountBoxes;
+        }
+
+        AnswerOne = AnswerOneNum.ToString();
+
+        while(playground.Circuits.Count > 1)
+        {
+            playground.ConnectClosestPair();
+        }
+
+        AnswerTwo = ((long)playground.LastPair[0].x * (long)playground.LastPair[1].x).ToString();
+    }
+}

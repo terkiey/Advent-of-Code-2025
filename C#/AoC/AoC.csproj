@@ -21,6 +21,8 @@
     <None Remove="Data\day7testinput.txt" />
     <None Remove="Data\day8input.txt" />
     <None Remove="Data\day8testinput.txt" />
+    <None Remove="Data\day9input.txt" />
+    <None Remove="Data\day9testinput.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +75,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\day8testinput.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day9input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\day9testinput.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

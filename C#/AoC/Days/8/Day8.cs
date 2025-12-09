@@ -2,16 +2,6 @@
 
 internal class Day8: Day
 {
-    protected override string[] FileInput(string filename)
-    {
-        FileTimer.Start();
-        string path = Path.Combine(AppContext.BaseDirectory, "Data", filename);
-        string[] input = File.ReadAllLines(path);
-        FileTimer.Stop();
-
-        return input;
-    }
-
     protected override void RunLogic(string[] lines)
     {
         IPlayground playground = new Playground(lines);

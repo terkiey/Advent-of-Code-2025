@@ -13,7 +13,7 @@ internal abstract class Day : IDay
     public void Main(DayArgs args)
     {
         string[] input = FileInput(args.filename, args.year);
-        RunLogicTimed(input, args.runParameter);
+        RunLogicTimed(input, args.RunParameter);
     }
 
     protected virtual string[] FileInput(string filename, int year)

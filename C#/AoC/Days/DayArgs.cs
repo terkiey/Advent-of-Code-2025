@@ -5,7 +5,7 @@ namespace AoC.Days;
 public record DayArgs(string filename, int year)
 {
     // For when the test input uses a different parameter setting than the real input.
-    public int runParameter => FileRunParameter(year);
+    public int RunParameter => FileRunParameter(year);
 
     private int FileRunParameter(int year)
     {

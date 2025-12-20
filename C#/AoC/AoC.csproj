@@ -229,8 +229,4 @@
     <PackageReference Include="Google.OrTools" Version="9.14.6206" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Days\2015\22\SimulatePossibilitiesAttempt\" />
-  </ItemGroup>
-
 </Project>

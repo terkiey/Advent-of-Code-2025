@@ -21,6 +21,11 @@ internal class EffectInstance
         RemainingTurns = remainingTurns;
     }
 
+    public EffectInstance Clone()
+    {
+        return new(Type, RemainingTurns);
+    }
+
     public bool Equals(EffectInstance other)
     {
         if (ReferenceEquals(this, other)) return true;

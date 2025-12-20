@@ -7,6 +7,10 @@ internal class Y2015Day22 : Day
 {
     protected override void RunLogic(string[] inputLines)
     {
+        var fightSim = new WizardFightSimulator(inputLines);
+        AnswerOne = fightSim.FindCheapestWin().ToString();
+        fightSim.HardMode(true);
+        AnswerTwo = fightSim.FindCheapestWin().ToString();
         
     }
 }

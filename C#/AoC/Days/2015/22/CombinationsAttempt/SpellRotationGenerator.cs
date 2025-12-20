@@ -4,16 +4,16 @@ internal class SpellRotationGenerator
 {
     private readonly int startMana = SpellStat.HeroMana;
     private const int rechargeMana = 505;
-    private readonly Dictionary<Spell, int> spellCosts = SpellStat.Cost;
+    private readonly Dictionary<SpellEnum, int> spellCosts = SpellStat.Cost;
 
-    public IEnumerable<Spell[]> GetSpellRotations(int rechargeCasts)
+    public IEnumerable<SpellEnum[]> GetSpellRotations(int rechargeCasts)
     {
         int lastMaxManaSpend = startMana + ((rechargeCasts - 1) * rechargeMana);
         int maxManaSpend = startMana + (rechargeCasts * rechargeMana);
         int cheapestSpell = spellCosts.Values.Min();
         int maxSpells = maxManaSpend / cheapestSpell;
 
-        int minManaSpend = lastMaxManaSpend + spellCosts[Spell.Recharge];
+        int minManaSpend = lastMaxManaSpend + spellCosts[SpellEnum.Recharge];
         int costliestSpell = spellCosts.Values.Max();
         int minSpells = minManaSpend / costliestSpell;
         if (rechargeCasts == 0)
@@ -38,7 +38,7 @@ internal class SpellRotationGenerator
         }
     }
 
-    private static IEnumerable<Spell[]> InsertRechargeCasts(IEnumerable<Spell[]> spellRotations, int rechargeCasts)
+    private static IEnumerable<SpellEnum[]> InsertRechargeCasts(IEnumerable<SpellEnum[]> spellRotations, int rechargeCasts)
     {
         foreach(var rotation in spellRotations)
         {
@@ -49,17 +49,17 @@ internal class SpellRotationGenerator
         }
     }
 
-    private static IEnumerable<Spell[]> InsertRechargeCastsIntoRotation(Spell[] inputRotation, int rechargeCasts)
+    private static IEnumerable<SpellEnum[]> InsertRechargeCastsIntoRotation(SpellEnum[] inputRotation, int rechargeCasts)
     {
-        IEnumerable<List<Spell>> current = [ inputRotation.ToList() ];
+        IEnumerable<List<SpellEnum>> current = [ inputRotation.ToList() ];
         for (int i = 0; i < rechargeCasts; i++)
         {
             current = current.SelectMany(rotation =>
                 Enumerable.Range(0, rotation.Count + 1)
                     .Select(insertIndex =>
                     {
-                        var copy = new List<Spell>(rotation);
-                        copy.Insert(insertIndex, Spell.Recharge);
+                        var copy = new List<SpellEnum>(rotation);
+                        copy.Insert(insertIndex, SpellEnum.Recharge);
                         return copy;
                     }));
         }
@@ -70,9 +70,9 @@ internal class SpellRotationGenerator
         }
     }
 
-    private static IEnumerable<Spell[]> TakeSpellsWithReplacement(int length)
+    private static IEnumerable<SpellEnum[]> TakeSpellsWithReplacement(int length)
     {
-        var values = Enum.GetValues(typeof(Spell)).Cast<Spell>().Where(spell => spell != Spell.Recharge).ToArray();
+        var values = Enum.GetValues(typeof(SpellEnum)).Cast<SpellEnum>().Where(spell => spell != SpellEnum.Recharge).ToArray();
         int n = values.Length;
 
         var indices = new int[length];

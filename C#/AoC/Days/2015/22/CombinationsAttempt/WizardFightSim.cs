@@ -26,7 +26,7 @@ internal class WizardFightSim
         _bossBaseDamage = int.Parse(inputLines[1].Split(": ")[1]);
     }
 
-    public bool Attempt(Spell[] strategy, bool hardMode)
+    public bool Attempt(SpellEnum[] strategy, bool hardMode)
     {
         ManaSpent = 0;
         BossHP = _bossMaxHP;
@@ -126,7 +126,7 @@ internal class WizardFightSim
         return false;
     }
     
-    private bool CastSpell(Spell spell)
+    private bool CastSpell(SpellEnum spell)
     {
         if (SpellStat.Cost[spell] > HeroMP)
         {
@@ -136,16 +136,16 @@ internal class WizardFightSim
         ManaSpent += SpellStat.Cost[spell];
         switch (spell)
         {
-            case Spell.MagicMissile:
+            case SpellEnum.MagicMissile:
                 BossHP -= 4;
                 return true;
 
-            case Spell.Drain:
+            case SpellEnum.Drain:
                 BossHP -= 2;
                 HeroHP += 2;
                 return true;
 
-            case Spell.Shield:
+            case SpellEnum.Shield:
                 if(!ActiveEffects.Add(new(Effect.Shield, shieldMaxDuration)))
                 {
                     return false;
@@ -153,14 +153,14 @@ internal class WizardFightSim
                 HeroArmor += 7;
                 return true;
 
-            case Spell.Poison:
+            case SpellEnum.Poison:
                 if (!ActiveEffects.Add(new(Effect.Poison, poisonMaxDuration)))
                 {
                     return false;
                 }
                 return true;
 
-            case Spell.Recharge:
+            case SpellEnum.Recharge:
                 if (!ActiveEffects.Add(new(Effect.Recharge, rechargeMaxDuration)))
                 {
                     return false;

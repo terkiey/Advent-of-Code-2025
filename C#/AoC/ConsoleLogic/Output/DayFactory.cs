@@ -20,6 +20,11 @@ internal class DayFactory : IDayFactory
         { 12, () => new Y2025Day12() }
     };
 
+    public Dictionary<int, Func<IDay>> dayFactories2016 = new()
+    {
+        { 01, () => new Y2016Day01() },
+    };
+
     public Dictionary<int, Func<IDay>> dayFactories2015 = new()
     {
         { 01, () => new Y2015Day01() },
@@ -55,14 +60,17 @@ internal class DayFactory : IDayFactory
     {
         switch (year)
         {
-            case 2015:
-                return dayFactories2015;
-
             case 2025:
                 return dayFactories2025;
 
+            case 2016:
+                return dayFactories2016;
+
+            case 2015:
+                return dayFactories2015;
+
             default:
-                throw new Exception("No year for factories specified");
+                throw new Exception("No factories for year specified");
         }
     }
 }
